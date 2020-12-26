@@ -1,0 +1,30 @@
+
+{% extends "../base.html" %}
+
+{% block head %}
+    <title>Data</title>
+{% endblock head %}
+
+{% block content %}
+  
+
+    <h1> Hello |{{ form.username.value }}|</h1>
+    
+    
+    <br><br>    
+
+
+    <form method="POST">
+        {% csrf_token %}
+        {% if form.non_field_errors %} 
+        {% for error in form.non_field_errors %} 
+        <h1> {{ error }} </h1> <br> 
+                {% endfor %} 
+                {% endif %}
+        {% for field in form %} 
+            {{ field.label_tag }} 
+            {{ field.value }} 
+            {{ field.errors|striptags }}<br> 
+            {% endfor %}
+        </form>
+{% endblock content %}    

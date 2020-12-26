@@ -1,0 +1,54 @@
+{% extends "../base.html" %}
+
+{% load static %}
+{% load widget_tweaks %}
+{% block head %}
+
+    <link rel="stylesheet" href="{% static 'css/appuser/reg.css' %}">
+
+    <title>Register</title>
+{% endblock head %}
+
+
+{% block content %}
+  
+    
+        <form method="POST" class="my-form">
+            <h1 class="text-center mt-5">Register</h1>
+            <hr class="bg-light" />
+            {% csrf_token %} 
+            <!-- {% if form.non_field_errors %} 
+                {% for error in form.non_field_errors %}
+                    <h1> {{ error }} </h1> <br> 
+                {% endfor %} 
+            {% endif %}  -->
+            
+            {% for field in form %} 
+                <div class="row">
+                    <div class="col-md-4 py-2">
+                        {{ field.label_tag }} 
+                    </div>
+                    <div class="col-md-8 py-2 text-center">
+                        {{ field | add_class:"form-field"}}
+                    </div>
+                    <span>
+                    
+                        {% for error in field.errors %}
+                        {{ error }}
+                        {% endfor %}
+                    </span> <br> 
+                </div>
+            {% endfor %}
+            <hr class="bg-light" />
+            <input type="submit" class="btn form-button">
+        </form>
+        
+        {% if messages %} 
+        {% for message in messages %}
+        
+        <small {% if message.tags %} class='{{messages.tags}}' {% endif %}>
+            {{message}}    
+        </small> {% endfor %} {% endif %}
+        
+        
+{% endblock content %}

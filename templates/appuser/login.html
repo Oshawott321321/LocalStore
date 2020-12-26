@@ -1,0 +1,62 @@
+{% extends "../base.html" %}
+
+
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block head %}
+
+    <link rel="stylesheet" href="{% static 'css/appuser/login.css' %}">
+
+
+    <title>Login</title>
+{% endblock head %}
+
+{% block content %}
+
+
+
+<form method='POST' class="my-form">
+        <h2 class="text-center font-weight-bold">Login</h2>
+        <hr class="bg-light" style="width:40%"/>
+        {% csrf_token %} 
+        {% if form.non_field_errors %} 
+                {% for error in form.non_field_errors %} 
+                    <p hidden id="error"> {{ error }} </p> <br> 
+                {% endfor %} 
+        {% endif %}
+            {% for field in form %}
+                <div class="row text-center py-2">
+
+                    <div class="col-md-4 font-weight-bold"> 
+                        {{ field.label_tag }}
+                    </div> 
+                    <div class="col-md-8">
+                        {{ field | add_class:"form-field" }}
+                    </div>   
+                    <!-- <p>    
+                        {{ field.errors|striptags }} 
+                    </p> -->
+                </div> 
+                    <!-- <br>
+                    <br> -->
+                {% endfor %}
+                <hr class="bg-light"/>
+        <input type="submit" class="btn form-button">
+    </form>
+    {% if messages %} 
+        {% for message in messages %}
+            <small {% if message.tags %} class='alert-{{messages.tags}}' {% endif %}>
+                {{message}}    
+            </small> 
+        {% endfor %} 
+    {% endif %}
+    
+<script>
+    const error = document.getElementById('error').innerHTML
+    alert(error)
+</script>
+
+    
+{% endblock content %}

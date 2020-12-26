@@ -1,0 +1,77 @@
+{% extends "../base.html" %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block head %}
+    <link rel="stylesheet" href='{% static "css/appuser/profile.css" %}'>
+  <title>Profile</title>
+{% endblock head %}
+
+{% block content %}
+  
+    <h1 class="text-center">Profile</h1>
+
+    
+
+    <br>
+    {% if user.is_superuser %}
+        <p class="d-inline">Admin Stuff :</p>
+        <a class='btn btn-primary' href="{% url 'Create-Card' %}">Create Card</a>
+    {% endif %}
+        
+        <!-- THis was supposed to be in superuser if-block 
+        but it soesn't matter because i didn't pass those users from views 
+        so if you want to change change it -->
+        {% if users != None %}
+        <!-- Example single danger button -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Users
+            </button>
+            <div class="dropdown-menu">
+                {% for user in users %}
+                    <a class="dropdown-item" href="{% url 'show_data' user.id %}">
+                        {{forloop.counter}} - {{ user.username }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        
+        <hr class="bg-light"/>
+        <h4 class="text-center">Information</h4>
+        <hr class="bg-light"/>
+        
+        <form method="POST">
+            {% csrf_token %}
+            {% if form.non_field_errors %} 
+        {% for error in form.non_field_errors %} 
+        <h1> {{ error }} </h1> <br> 
+        {% endfor %} 
+        {% endif %}
+        {% for field in form %}
+            <div class="row text-center">
+                <div class="col-md-4">
+                    {{ field.label_tag }} 
+                </div>
+                <div class="col-md-8 temp form-field">    
+                    {% if field.label == 'Username' %}
+                        <p>Taksh</p>
+                    {% elif field.label == 'Date joined' %}
+                        {{ field.value }}
+                    {% else %}
+                    {{ field | add_class:"form-field"}}
+                    {% endif %}
+                </div>
+                    {{ field.errors|striptags }}<br> 
+            </div>
+        {% endfor %}
+            <div class="text-center text-info">
+                <a href="{% url 'ChangePassword' %}" class="btn btn-primary" >Change Pass</a>
+                <a href="{% url 'ChangePassword1' %}" class="btn btn-primary">Change Pass1</a>
+            </div>
+            <hr class="bg-light" />
+            <input type="submit" value="Save" class="btn form-button">
+        </form>
+{% endblock content %}

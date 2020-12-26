@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+{% block head %}
+    <script src ='{% static "js\product\developers.js" %}'></script>
+    <link rel="stylesheet" href='{% static "css\product\developers.css" %}'>
+    <title>Developers</title>
+{% endblock head %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class='row'>
+        <h3 class='col-md text-center my-2'>About Developers</h3>
+    </div>
+    <hr class="bg-light" style="height: 1px;"/>
+
+    <div class='row '>
+        
+        <div class="col-md-3">
+            <h5 class="card-title text-center">Taksh Patel</h5>
+            <img id='image' src="{% static 'images/developers/taksh.jpg' %}" class=" card-img-top"alt="...">
+            <div class="card-body">
+            <p class="card-text text-center">Senior Developer</p>
+            <hr class="bg-light" />
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad suscipit rerum dolor officia odio illo quibusdam itaque sit blanditiis libero.
+            </p>
+            <a href="https://www.linkedin.com/in/taksh-patel-1a7a511b9/" class="btn btn-primary">More Info.</a>
+        </div>
+    </div>
+    
+        <div class="col-md-3">
+            <h5 class="card-title text-center">Shivam Prajapati</h5>
+            <img src="{% static 'images/developers/img2.jpg' %}" class="card-img-top" alt="Shivam">
+            
+            <div class="card-body">
+                <p class="card-text text-center">Senior Developer</p>
+                <hr class="bg-light" />
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, dolor ullam quibusdam neque placeat sequi sunt blanditiis inventore aliquid dolorum?</p>
+                <a href="" class="btn btn-primary">More Info.</a>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <h5 class="card-title text-center">Prince Tirhtankar</h5>
+            <img src="{% static 'images/developers/img2.jpg' %}" class="card-img-top" alt="Prince">
+            
+            <div class="card-body">
+                <p class="card-text text-center">Senior Developer</p>
+                <hr class="bg-light" />
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga quas praesentium minima dignissimos dolore debitis odit quod cupiditate a earum.</p>
+                <a href="" class="btn btn-primary">More Info.</a>
+            </div>
+    </div>
+    
+    <div class="col-md-3">
+        <h5 class="card-title text-center">Deep Vaghela</h5>
+        <img src="{% static 'images/developers/img2.jpg' %}" class="card-img-top" alt="Deep">
+        
+        <div class="card-body">
+            <p class="card-text text-center">Senior Developer</p>
+            <hr class="bg-light" />
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga quas praesentium minima dignissimos dolore debitis odit quod cupiditate a earum.</p>
+            <a href="" class="btn btn-primary">More Info.</a>
+        </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock content %}

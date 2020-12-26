@@ -1,0 +1,18 @@
+{% extends "../base.html" %}
+{% block head %}
+    <title>Create Card</title>
+{% endblock head %}
+
+{% block content %}
+  
+    <form action="" method="post">
+        {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" formnovalidate value="submit">
+            {% if messages %}
+            {% for message in messages %}
+            {{message}}
+            {% endfor %}
+            {% endif %}
+    </form>
+{% endblock content %}

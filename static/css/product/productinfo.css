@@ -1,0 +1,7 @@
+.my-btn {
+    color:yellow;
+}
+.my-btn:hover {
+    transform: scale(2);
+    background: rgba(red, green, blue, 1);
+}

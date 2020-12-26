@@ -1,0 +1,50 @@
+{% extends "../base.html" %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/transaction/enter_data.css' %}">
+    <title>Card details</title>
+{% endblock head %}
+
+{% block content %}
+    <form action="" method="post" class="my-form">
+        <p class="text-center font-weight-bold">Enter YOur Card details</p>
+        <hr class="bg-light"/>
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="row text-center py-2">
+
+                    <div class="col-md-4 font-weight-bold"> 
+                        {{ field.label_tag }}
+                    </div> 
+                    <div class="col-md-8">
+                        {{ field | add_class:"form-field" }}
+                    </div>   
+                    <!-- <p>    
+                        {{ field.errors|striptags }} 
+                    </p> -->
+                </div> 
+                    <!-- <br>
+                    <br> -->
+                {% endfor %}
+            <input type="submit" class="form-button">
+    </form>
+        {% if messages %}
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}    
+        {% endif %}
+    
+    <div class="border border-info col-md-3">
+        <p class="text-center border-bottom">global_card</p>
+        <p>No: {{ global_card.card_number }}</p>
+        <p>CVV: {{ global_card.card_cvv }}</p>
+        <p>Month: {{ global_card.card_exp_month }}</p>
+        <p>Year: {{ global_card.card_exp_year }}</p>
+        <p>Name: {{ global_card.card_name }}</p>
+        <p>Bal: {{ global_card.card_balance }}</p>
+        
+    </div>
+{% endblock content %}

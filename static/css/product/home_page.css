@@ -1,0 +1,26 @@
+.cart-btn {
+    width: 40%;
+    /* background: blue; */
+    outline-color: yellow;
+    margin : 0% 30%;
+    color : white;
+    font-size: 20px;
+    font-weight: 600;
+    /* border : 5px solid blue; */
+}
+.cart-btn:hover {
+    color: red;
+    border-radius: 5px;
+    /* color: cornflowerblue; */
+    transform: scale(1.2);
+    background: rgba(red, green, blue, 0);
+}
+.my-btn {
+    color:yellow;
+    /* background: yellow; */
+    /* background: rgba(red, green, blue, 0); */
+}
+.my-btn:hover {
+    transform: scale(2);
+    background: rgba(red, green, blue, 1);
+}

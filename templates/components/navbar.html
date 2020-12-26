@@ -1,0 +1,58 @@
+{% load static %}
+  <link rel="stylesheet" href="{% static 'css/components/navbar.css' %}">
+  <nav class="row navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
+
+      <img id="img-logo" src="{% static 'images/mylogo.png' %}" alt="logo"
+            class="rounded">
+    
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        
+        <li class="nav-item active nav-hover px-4">
+          <a class="nav-link rounded" href="{% url 'Home_Page' %}"><i class="far fa-home-lg-alt"></i> Home<span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item px-3 nav-hover">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+
+        <li class="nav-item px-3 nav-hover">
+            <div class="btn-group">
+                <button type="button" class="btn bg-dark text-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="far fa-user"></i> User
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="{% url 'Profile' %}"><i class="fas fa-id-card pr-3"></i> Profile</a>
+                  <a class="dropdown-item" href="{% url 'Login' %}"><i class="fas fa-sign-in pr-3"></i> Login</a>
+                  <a class="dropdown-item" href="{% url 'Register' %}"><i class="fas fa-user-plus pr-3"></i> Register</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt pr-3"></i> Log-Out</a>
+                </div>
+            </div>
+        </li>
+
+        <li class="nav-item rounded px-3 nav-hover">
+            <a class="nav-link" href="{% url 'Show_Cart' %}"><i class="fas fa-shopping-cart px-2"></i> Cart</a>
+        </li>
+        
+        <li class="nav-item px-3 nav-hover">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+
+        <li class="nav-item px-3 nav-hover">
+            <a href="{% url 'developers' %}" class="nav-link btn"><i class="far fa-info-square"></i> About</a> 
+        </li>
+
+      </ul>
+      
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> 
+    </div>
+  </nav> 
+

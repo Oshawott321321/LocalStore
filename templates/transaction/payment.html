@@ -1,0 +1,31 @@
+{% extends "../base.html" %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/transaction/payment.css' %}">
+    <title>Payment</title>
+{% endblock head %}
+
+{% block content %}
+
+<form action="" method="post" class="my-form">
+    <p class="text-center font-weight-bold">Payment page</p>
+    <hr class="bg-light" />
+    {% csrf_token %}
+    {% for field in form %}
+                <div class="row text-center py-2">
+
+                    <div class="col-md-4 font-weight-bold"> 
+                        {{ field.label_tag }}
+                    </div> 
+                    <div class="col-md-8">
+                        {{ field | add_class:"form-field" }}
+                    </div>   
+                </div>
+        {% endfor %}
+        <input type="submit" class="form-button">
+    </form>
+
+{% endblock content %}

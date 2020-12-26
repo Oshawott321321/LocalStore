@@ -1,0 +1,15 @@
+
+#img-logo {
+    margin: 0%;
+    padding: 0;
+    /* border: 1px solid yellow; */
+    height: 40px;
+    width: 60px;
+}
+
+.nav-hover a:hover {
+    background: #ddd;
+    border-radius: 5px;
+    color: cornflowerblue;
+    transform: scale(1.1);
+}

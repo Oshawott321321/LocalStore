@@ -1,0 +1,29 @@
+{% extends "../base.html" %}
+
+{% load static %}
+{% block head %}
+
+<title>{{data.pro_name}}</title>
+<link rel="stylesheet" href="{% static 'css/product/productinfo.css' %}">
+{% endblock head %}
+
+{% block content %}
+  
+    <div class='container'>
+        <div class="row">
+            <div class="col-md-6">
+                <img class="card-img-top border border-primary rounded" src='{{ data.pro_image.url }}'
+                height=300px width=200px alt="Card image cap">
+                <h5 class="text-center">{{data.pro_name}}</h5>
+                <a href="{% url 'add_to_cart' data.id %}" class="mx-auto btn btn-outline-success my-btn">
+                    <i class="fal fa-cart-arrow-down"></i>
+                </a>
+            </div>
+            <div class="col-md-6">
+                <p>Shop : {{data.pro_shop}}</p>
+                <p> Price : {{data.pro_price}}</p>
+                <p class="card-text">{{ data.pro_des}}</p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

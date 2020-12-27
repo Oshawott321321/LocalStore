@@ -30,3 +30,4 @@ class OWNUSER(AbstractUser):
     state = models.ForeignKey(State,on_delete=models.CASCADE,null=True)
     city = models.ForeignKey(City,on_delete=models.CASCADE,null=True)
     area = models.ForeignKey(Area,on_delete=models.CASCADE,null=True)
+    is_shop_owner = models.BooleanField(default = False)

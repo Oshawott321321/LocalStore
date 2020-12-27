@@ -4,6 +4,10 @@ from django.contrib import messages
 from django.contrib.auth import login,logout,authenticate,update_session_auth_hash
 from django.contrib.auth.forms import AuthenticationForm,PasswordChangeForm,SetPasswordForm,UserChangeForm
 
+
+from product.forms import ShopForm
+from product.models import Shop
+
 # Create your views here.
 
 def register_user(request):
@@ -47,7 +51,10 @@ def Profile(request):
                     form.save()
                     messages.success(request,"Profile Updated")
             form = AdminProfileForm(instance = request.user)
-            context={'form':form,'name':request.user , "users":users }
+            shops = Shop.objects.filter(shop_owner =request.user)
+            if not shops.exists():
+                shops = None
+            context={'form':form,'name':request.user , "users":users ,"shops":shops }
             return render(request,'appuser/profile.html',context)
         else:
             return redirect('Login')
@@ -59,7 +66,10 @@ def Profile(request):
                 if form.is_valid():
                     form.save()
                     messages.success(request,"Profile Updated")
-            context={'form':form,'name':request.user }
+            shops = Shop.objects.filter(shop_owner =request.user)
+            if not shops.exists():
+                shops = None
+            context={'form':form,'name':request.user , "shops":shops }
             return render(request,'appuser/profile.html',context)
         else:
             return redirect('Login')
@@ -109,3 +119,22 @@ def change_pass1(request):
         return redirect('Login')
     context={ 'form':form }
     return render (request,'appuser/changepass1.html',context)
+
+
+def create_shop(request):
+    if not request.user.is_authenticated:
+        return redirect('Home_Page')
+    form = ShopForm(request.POST or None , request.FILES or None)
+    if request.method == 'POST':
+        form = ShopForm(request.POST,request.FILES)
+        if form.is_valid():
+            shopdata = form.save(commit=False)
+            shopdata.shop_owner = request.user
+            OWNUSER.objects.filter(username = request.user.username).update(is_shop_owner =True)
+            shopdata.save()
+            return redirect('Profile')
+    context = {"form":form}
+    return render(request,'appuser/create_shop.html',context)
+
+# def delete_shop(request):
+#     OWNUSER.objects.filter(username = request.user.username).update(is_shop_owner =True)

@@ -9,6 +9,8 @@ from .models import *
 
 def home_page(request):
     context = {}
+    # Function call to fetch data
+    # apply filters there
     context['product_data'] = get_product_data(request)
     return render(request,'product/home_page.html',context)
 
@@ -16,17 +18,89 @@ def get_product_data(request):
     product_data = Product.objects.all()
     return product_data
 
-# def create_product(request):
-#     form = ProductForm(request.POST or None , request.FILES or None)
-#     if request.method == 'POST':
-#         form = ProductForm(request.POST,request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             messages.success(request,'Product Created')
-#         else:
-#             messages.success(request,'Form Error')
-#     context = { 'form':form ,'user':request.user }
-#     return render(request,'product/createproduct.html',context)
+
+    
+# show details of shop to its owner and give options to modification
+def myshop(request,pk): #pk = shop id  
+    if not request.user.is_authenticated:
+        return redirect('Login')
+    
+    try:
+        shopdata = Shop.objects.get(id = pk)
+    except:
+        return redirect('Profile')
+
+    # confirming that is user is owner of shop or not
+    if request.user.username != shopdata.shop_owner.username:
+        return redirect('Home_Page')
+    products = Product.objects.filter(pro_shop = shopdata)
+    context = {"pk":pk ,'shopdata':shopdata}
+
+    if not products.exists():
+        context['products'] = None
+    else:
+        context['products'] = products
+    return render(request,"product/myshop.html",context)
+
+
+
+# create product for particular shop
+def create_product(request,pk):#pk = shop_id
+    if not request.user.is_authenticated:
+        return redirect('Login')
+
+    
+    # confirming that is user is owner of shop or not
+    try:
+        shopdata = Shop.objects.get(id = pk)
+    except:
+        return redirect('Profile')
+    if request.user.username != shopdata.shop_owner.username:
+        return redirect('Home_Page')
+    # End check block
+    
+    form = ProductForm(request.POST or None , request.FILES or None)
+    if request.method == 'POST':
+        form = ProductForm(request.POST,request.FILES)
+        if form.is_valid():
+            pdata = form.save(commit=False)
+            pdata.pro_shop = Shop.objects.get(id = pk)
+            pdata.save()
+            return redirect('Myshop' ,pk =pk)
+
+    context = { 'form':form ,'user':request.user ,"pk":pk}
+    return render(request,'product/createproduct.html',context)
+
+
+
+def update_product(request,pk): # pk = product id 
+
+    # checking user authentication 
+    if not request.user.is_authenticated:
+        return redirect('Login')
+    p = Product.objects.get(id = pk)
+    if request.user.username != p.pro_shop.shop_owner.username:
+        return redirect('Login')
+    # End Check
+        
+    form = ProductForm( request.POST or None, instance=p)
+    if form.is_valid():
+        form.save()
+        return redirect('Myshop' , pk = p.pro_shop.id)
+    context = {"form":form}
+    return render(request,"product/update_product.html",context)
+
+
+def delete_product(request,pk): #pk = product_id
+    if not request.user.is_authenticated:
+        return redirect('Login')
+    p = Product.objects.get(id = pk)
+    if request.user.username != p.pro_shop.shop_owner.username:
+        return redirect('Login')
+    p.delete()
+    return redirect('Myshop' ,pk = p.pro_shop.id)
+
+
 
 def about_developers(request):
     return render(request,'product/developers.html')
@@ -97,7 +171,6 @@ def show_cart(request):
               'cart_products': cart_products,
               'USER':request.user,
               'total':total }
-    print(context)
     return render(request,'product/cart.html',context)
 
 def increase(request,cpid):

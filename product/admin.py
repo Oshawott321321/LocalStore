@@ -9,7 +9,7 @@ class WeekAdmin(admin.ModelAdmin):
 
 @admin.register(Shop)
 class ShopAdmin(admin.ModelAdmin):
-    list_display = ['id','shop_owner','shop_image','shop_open_time','shop_close_time']
+    list_display = ['id','shop_owner','shop_name','shop_image','shop_open_time','shop_close_time']
 
 
 @admin.register(Product)

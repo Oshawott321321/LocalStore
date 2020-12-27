@@ -20,6 +20,9 @@
         <a class='btn btn-primary' href="{% url 'Create-Card' %}">Create Card</a>
     {% endif %}
         
+
+
+    
         <!-- THis was supposed to be in superuser if-block 
         but it soesn't matter because i didn't pass those users from views 
         so if you want to change change it -->
@@ -38,6 +41,15 @@
         </div>
         {% endif %}
         
+
+        {% if user.is_shop_owner %}
+            <span>My Shops:</span>
+            {% for shop in shops  %}
+                <a class="btn btn-primary" href="{% url 'Myshop' shop.id %}">{{shop.shop_name}}</a>
+            {% endfor %}    
+            {% endif %}
+        <br>
+            <a class="btn btn-primary mt-3" href="{% url 'Create_shop' %}">Create Shop and Start Business</a>
         
         <hr class="bg-light"/>
         <h4 class="text-center">Information</h4>
@@ -57,7 +69,7 @@
                 </div>
                 <div class="col-md-8 temp form-field">    
                     {% if field.label == 'Username' %}
-                        <p>Taksh</p>
+                        <p>{{field.value}}</p>
                     {% elif field.label == 'Date joined' %}
                         {{ field.value }}
                     {% else %}

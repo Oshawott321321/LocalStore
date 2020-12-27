@@ -1,0 +1,55 @@
+{% extends "../base.html" %}
+
+{% load static %}
+
+{% block head %} 
+    <link rel="stylesheet" href='{% static "css\product\myshop.css" %}'>
+    <title>My Shop</title>
+{% endblock head %}
+
+{% block content %}
+
+    <div class="row border ">
+        
+        <a href="{% url 'Create-Product' shopdata.id %}" class="btn btn-secondary">Add Product</a>
+    </div>
+
+    <p>Modify Shop Details</p>
+    <img src="{{shopdata.shop_image.url}}" alt="Shop Image" height="200px" width="300px">
+    <p>{{shopdata}}</p>
+    <p>{{shopdata.shop_owner}}</p>
+    <p>Add:{{shopdata.shop_address}}</p>
+    <p>{{shopdata.shop_close_time}}</p>
+
+    <div class="border">
+        <p>My Products</p>
+        {% if products == None %}
+        <p>No Products</p>
+        {% else %}
+            <div class="row">
+                {% for pro in products %}
+                  
+                <div class="col-md-2">
+                    <img src="{{ pro.pro_image.url }}" alt="" height="50px" width="50px">
+                </div>
+                <div class="col-md-3">
+                    <p>{{pro.pro_name}}</p>
+                </div>
+                <div class="col-md-3">
+                    <p>{{pro.pro_des}}</p>
+                </div>
+                <div class="col-md-1">
+                    {{ pro.pro_price}}
+                </div>
+                <div class="col-md-1">
+                    {{ pro.pro_quantity}}
+                </div>
+                <div class="col-md-2">
+                    <a href="{% url 'Update_product' pro.id %}" class="btn btn-light">Change</a>
+                    <a href="{% url 'Delete_product' pro.id %}" class="btn btn-light">Delete</a>
+                </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock content %}

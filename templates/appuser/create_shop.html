@@ -1,0 +1,24 @@
+{% extends "../base.html" %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block head %}
+    <link rel="stylesheet" href='{% static "css/appuser/profile.css" %}'>
+  <title>Profile</title>
+{% endblock head %}
+
+{% block content %}
+  
+    <h1 class="text-center">Create Shop</h1>
+
+    
+
+        
+        
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Save" class="btn btn-primary">
+        </form>
+{% endblock content %}

@@ -1,0 +1,12 @@
+.form-button {
+    width: 40%;
+    background: none;
+    margin : 0% 30%;
+    color : white;
+    font-size: 20px;
+    font-weight: 600;
+    /* border : 5px solid blue; */
+}
+.form-button:hover {
+    background-color: rgb(148, 91, 16);
+}

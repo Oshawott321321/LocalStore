@@ -31,15 +31,19 @@
                         <!-- height=500px width=100px> -->
                 </div>
 
-                <div class="col-md-2 d-flex align-items-center">
-                    <h5 class="card-title">{{product.cart_product_id.pro_name}}</h5>
+                <div class="col-md-2 m-auto">
+                    <a href="{% url 'Productinfo' product.cart_product_id.id %}" style="color: black;">
+                        <u>
+                            {{product.cart_product_id.pro_name}}
+                        </u>
+                    </a>
                 </div>
 
-                <div class="col-md-2 d-flex align-items-center">
+                <div class="col-md-2 m-auto">
                     <p>{{product.cart_product_id.pro_price}}</p>
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-md-2 my-auto">
                     <p> {{product.cart_product_id.pro_price}}</p>
                     <p> * {{product.cart_product_quantity}}</p>
                     
@@ -48,7 +52,7 @@
                 </div>
 
                 <div class="col-md-1 d-flex align-items-center ">
-                    <div class="row alig">
+                    <div class="row">
                         <a href="{% url 'Increase' product.id %}" class="btn my-btn w-50 mx-auto">
                             <i class="fas fa-plus"></i>
                         </a>

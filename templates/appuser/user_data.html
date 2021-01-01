@@ -8,23 +8,23 @@
 {% block content %}
   
 
-    <h1> Hello |{{ form.username.value }}|</h1>
+    <h1 class="text-center mt-5"> Username : {{ form.username.value }}</h1>
     
     
-    <br><br>    
 
 
     <form method="POST">
         {% csrf_token %}
-        {% if form.non_field_errors %} 
-        {% for error in form.non_field_errors %} 
-        <h1> {{ error }} </h1> <br> 
-                {% endfor %} 
-                {% endif %}
-        {% for field in form %} 
-            {{ field.label_tag }} 
-            {{ field.value }} 
-            {{ field.errors|striptags }}<br> 
+        <div class="row border-bottom">
+
+            {% for field in form %}
+            <div class="col-md-3 text-center">
+                {{ field.label_tag }} 
+            </div> 
+            <div class="col-md-3 border-right ">
+                {{ field.value }} 
+            </div><br>
             {% endfor %}
         </form>
+    </div>
 {% endblock content %}    

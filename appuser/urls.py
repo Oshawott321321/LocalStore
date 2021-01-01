@@ -14,4 +14,6 @@ urlpatterns = [
     path('show_data/<str:id>/',show_data,name="show_data"),
     
     path('create_shop/',create_shop,name="Create_shop"),
+    path('delete_shop/<int:pk>/',delete_shop,name="Delete_shop"),
+    path('update_shop/<int:pk>/',update_shop,name="Update_shop"),
 ]

@@ -17,7 +17,7 @@
     <br>
     {% if user.is_superuser %}
         <p class="d-inline">Admin Stuff :</p>
-        <a class='btn btn-primary' href="{% url 'Create-Card' %}">Create Card</a>
+        <a class='btn btn-primary border' href="{% url 'Create-Card' %}">Create Card</a>
     {% endif %}
         
 
@@ -49,11 +49,13 @@
             {% endfor %}    
             {% endif %}
         <br>
-            <a class="btn btn-primary mt-3" href="{% url 'Create_shop' %}">Create Shop and Start Business</a>
+            <a class="btn btn-primary mt-3 border" href="{% url 'Create_shop' %}">Create Shop and Start Business</a>
+            
         
         <hr class="bg-light"/>
         <h4 class="text-center">Information</h4>
         <hr class="bg-light"/>
+
         
         <form method="POST">
             {% csrf_token %}
@@ -67,13 +69,13 @@
                 <div class="col-md-4">
                     {{ field.label_tag }} 
                 </div>
-                <div class="col-md-8 temp form-field">    
-                    {% if field.label == 'Username' %}
+                <div class="col-md-8 temp form-field">   
+                    {% if field.label == 'Username' or field.label == 'Last login' or field.label == 'Superuser status' %}
                         <p>{{field.value}}</p>
                     {% elif field.label == 'Date joined' %}
                         {{ field.value }}
                     {% else %}
-                    {{ field | add_class:"form-field"}}
+                    {{ field | add_class:"form-field rounded"}}
                     {% endif %}
                 </div>
                     {{ field.errors|striptags }}<br> 

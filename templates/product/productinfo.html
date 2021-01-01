@@ -4,25 +4,33 @@
 {% block head %}
 
 <title>{{data.pro_name}}</title>
-<link rel="stylesheet" href="{% static 'css/product/productinfo.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/product/productinfo.css' %}">
 {% endblock head %}
 
 {% block content %}
   
     <div class='container'>
-        <div class="row">
-            <div class="col-md-6">
-                <img class="card-img-top border border-primary rounded" src='{{ data.pro_image.url }}'
-                height=300px width=200px alt="Card image cap">
-                <h5 class="text-center">{{data.pro_name}}</h5>
-                <a href="{% url 'add_to_cart' data.id %}" class="mx-auto btn btn-outline-success my-btn">
-                    <i class="fal fa-cart-arrow-down"></i>
-                </a>
+        <div class="row mt-5">
+            <div class="col-md-4 ">
+                <img class=" card-img-top pb-4 border-bottom border-light rounded" src='{{ data.pro_image.url }}'
+                 alt="Card image cap">
             </div>
-            <div class="col-md-6">
-                <p>Shop : {{data.pro_shop}}</p>
+            <div class="col-md-4">
+                <h5 class="text-center">{{data.pro_name}}</h5>
+                <hr class="bg-light"/>
+                <p>Shop :
+                    <a href="{% url 'Shop_Details' data.pro_shop.id %}" class="h4" style="color: black;">
+                        <u>
+                            {{data.pro_shop}}
+                        </u>
+                    </a>
+                </p>
                 <p> Price : {{data.pro_price}}</p>
                 <p class="card-text">{{ data.pro_des}}</p>
+                <p> Remaining : {{data.pro_quantity}}</p>
+                <a href="{% url 'add_to_cart' data.id %}" class="mx-auto btn btn-outline-light my-btn">
+                    <i class="fal fa-cart-arrow-down"></i>
+                </a>
             </div>
         </div>
     </div>

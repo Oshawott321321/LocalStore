@@ -17,8 +17,10 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+      <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" /> -->
       
       <link rel="stylesheet" href="{% static 'css/base.css' %}">
+      <script src="{% static 'js/base.js' %}"></script>
       <!-- google fonts -->
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -28,10 +30,11 @@
       {% endblock head %}
       <style>
         body {
-          color: white;
+          color: black;
           margin: 0;
           padding: 0;
-          background : url('{% static "images/background.jpg"%}') no-repeat center center fixed;
+          background : url('{% static "images/backgroud9.jpg"%}') no-repeat center center fixed;
+          /* background-image: repeating-linear-gradient(165deg,rgba(0, 0, 0, 0.5) 0%,rgba(200, 250, 20, 0.699) 2%,rgba(0, 0, 0, 0.5) 10%); */
           -webkit-background-size : cover;
           -moz-background-size : cover;
           -o-background-size : cover;

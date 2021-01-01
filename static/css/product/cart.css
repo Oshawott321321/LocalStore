@@ -3,7 +3,7 @@
     /* background: blue; */
     outline-color: yellow;
     margin : 0% 30%;
-    color : white;
+    color : black;
     font-size: 20px;
     font-weight: 600;
     /* border : 5px solid blue; */
@@ -13,7 +13,7 @@
     border-radius: 5px;
     /* color: cornflowerblue; */
     transform: scale(1.2);
-    background: rgba(red, green, blue, 0);
+    background: rgba(red, green, blue, 1);
 }
 .my-btn {
     background: rgba(red, green, blue, 0);
@@ -22,3 +22,7 @@
     transform: scale(2);
     /* background: rgba(red, green, blue, 1); */
 }
+/* 
+#delete {
+
+} */

@@ -3,11 +3,13 @@
     margin: 0%;
     padding: 0;
     /* border: 1px solid yellow; */
-    height: 40px;
-    width: 60px;
+    height: 50px;
+    width: 55px;
 }
-
-.nav-hover a:hover {
+/* nav {
+    color: black;
+} */
+.nav-hover a:hover{
     background: #ddd;
     border-radius: 5px;
     color: cornflowerblue;

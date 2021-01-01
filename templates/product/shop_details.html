@@ -1,0 +1,53 @@
+{% extends "../base.html" %}
+
+{% load static %}
+
+{% block head %} 
+    <link rel="stylesheet" href='{% static "css\product\home_page.css" %}'>
+    <title>{{shop.shop_name}}</title>
+{% endblock head %}
+
+{% block content %}
+
+<div class="row ">
+
+        <div class="col-md-4 ">  
+                <img class="card-img-top" src='{{ shop.shop_image.url }}'
+                height=300px width=100px alt="Card image cap">
+        </div>
+        <div>
+            <h3 class="card-title text-center">{{shop.shop_name}}</h3>
+            <p>Owner :{{shop.shop_owner}}</p>
+            <p>Address :{{shop.shop_address}}</p>
+            <p>Contact :{{shop.shop_contact}}</p>
+        </div>
+</div>
+<hr class="bg-light"/>
+<div class="row">
+    <h1 class="col-md-12 text-center">Products</h1>
+    {% for product in product_data %}
+        <div class="col-md-3 ">     
+            <div class="card mx-auto " style="width: 18rem;background-color:rgba(0, 0, 0,0);">
+                <img class="card-img-top " src='{{ product.pro_image.url }}'
+                height=200px width=80px alt="Card image cap">
+                <div class="card-body">
+                    <a href="{% url 'Productinfo' product.id %}" style="color: black;">
+                        <u class="card-title h4">
+                            {{product.pro_name}}
+                        </u>
+                    </a>
+                    <p> Price : {{product.pro_price}} ₹</p>
+                    <p>{{ product.pro_des}}</p>
+                    <p>Remaining : {{ product.pro_quantity}}</p>
+                    <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary my-btn">
+                        <i class="fal fa-cart-arrow-down"></i>
+                    </a>
+                </div>
+            </div>
+            <hr class="bg-light" />
+        </div>
+    {% endfor %}
+</div>
+        
+
+{% endblock content %}

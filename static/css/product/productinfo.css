@@ -1,7 +1,11 @@
 .my-btn {
     color:yellow;
+    width: 50px;
+    /* border: 5px solid green; */
 }
 .my-btn:hover {
     transform: scale(2);
-    background: rgba(red, green, blue, 1);
+    /* border: 5px solid green; */
+    border-radius: 100000px;
+    background: rgb(255, 255, 54);
 }

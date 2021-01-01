@@ -136,5 +136,38 @@ def create_shop(request):
     context = {"form":form}
     return render(request,'appuser/create_shop.html',context)
 
-# def delete_shop(request):
-#     OWNUSER.objects.filter(username = request.user.username).update(is_shop_owner =True)
+def update_shop(request ,pk): # pk = shop id
+    if not request.user.is_authenticated:
+        return redirect('Login')
+    
+    shopdata = Shop.objects.get(id = pk)
+
+    # confirming that is user is owner of shop or not
+    if request.user.username != shopdata.shop_owner.username:
+        return redirect('Home_Page')
+
+    form = ShopForm(request.POST or None , request.FILES or None , instance=shopdata)
+    if form.is_valid():
+        form.save()
+        print("shop Updated")
+        return redirect('Myshop' ,pk = pk)
+    context = {"form":form}
+    return render(request,'appuser/update_shop.html',context)
+
+
+
+# deletes Shop
+def delete_shop(request,pk): #pk = Shop id
+    if not request.user.is_authenticated:
+        return redirect('Login')
+    
+    shopdata = Shop.objects.get(id = pk)
+
+    # confirming that is user is owner of shop or not
+    if request.user.username != shopdata.shop_owner.username:
+        return redirect('Home_Page')
+    shopdata.delete()
+    tempshop_data = Shop.objects.filter(shop_owner= request.user)
+    if not tempshop_data.exists():
+        OWNUSER.objects.filter(username = request.user.username).update(is_shop_owner =False)
+    return redirect('Profile')

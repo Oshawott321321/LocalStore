@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.http import Http404
 from .forms import *
 from .models import *
+from django.db.models import Q
 
 # Create your views here.
 
@@ -11,15 +12,34 @@ def home_page(request):
     context = {}
     # Function call to fetch data
     # apply filters there
-    context['product_data'] = get_product_data(request)
+    product_data = Product.objects.all()
+    context['product_data'] = product_data 
     return render(request,'product/home_page.html',context)
 
-def get_product_data(request):
-    product_data = Product.objects.all()
-    return product_data
-
-
+# 
+# 
+# 
+# 
+# 
+# 
+def search(request):
+    query = request.GET['query']
     
+    product_data = Product.objects.filter(Q(pro_name = query))
+
+    shop_data = Shop.objects.filter(Q(shop_name__contains = query) | Q(shop_owner__username = query))
+    
+    context={"product_data" : product_data ,
+                "shop_data" : shop_data}
+    return render(request,'product/search.html',context)
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+#     
 # show details of shop to its owner and give options to modification
 def myshop(request,pk): #pk = shop id  
     if not request.user.is_authenticated:
@@ -41,6 +61,18 @@ def myshop(request,pk): #pk = shop id
     else:
         context['products'] = products
     return render(request,"product/myshop.html",context)
+
+
+def shop_details(request , pk): #pk =shop_id
+    try:
+        shop_data = Shop.objects.get(id = pk)
+    except:
+        return redirect('Home_Page')
+
+    product_data = Product.objects.filter(pro_shop = shop_data)
+    context = { "shop":shop_data , 
+                "product_data":product_data}
+    return render(request ,'product/shop_details.html',context)
 
 
 

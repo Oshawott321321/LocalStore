@@ -19,9 +19,10 @@ class ProfileForm(UserChangeForm):
     class Meta:
         model = OWNUSER
         # fields = '__all__'
-        fields = ['username','first_name','last_name','email','mobile_no']
+        fields = ['username','first_name','last_name','email','mobile_no','last_login']
 
 class AdminProfileForm(UserChangeForm):
     class Meta:
         model = OWNUSER
         fields = '__all__'
+        exclude = ['password']

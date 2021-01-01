@@ -16,7 +16,7 @@ class Week(models.Model):
 class Shop(models.Model):
     shop_owner = models.ForeignKey(OWNUSER, on_delete=models.CASCADE)
     shop_address_area = models.ForeignKey(Area, on_delete=models.CASCADE)
-    shop_name =models.CharField( max_length=100 , null = True)
+    shop_name = models.CharField( max_length=100 , null = True)
     shop_address =models.CharField( max_length= 500 ,null=True )
     shop_image = models.ImageField( null = True ,blank = True,upload_to='shops')#,height_field=hw, width_field=hw)
     shop_contact = models.CharField(max_length=10,null=True)

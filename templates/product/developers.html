@@ -4,8 +4,11 @@
 {% load static %}
 
 {% block head %}
-    <script src ='{% static "js\product\developers.js" %}'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js" integrity="sha512-hZf9Qhp3rlDJBvAKvmiG+goaaKRZA6LKUO35oK6EsM0/kjPK32Yw7URqrq3Q+Nvbbt8Usss+IekL7CRn83dYmw==" crossorigin="anonymous"></script> -->
+    <!-- <script src ='{% static "js\product\developers.js" %}'></script> -->
     <link rel="stylesheet" href='{% static "css\product\developers.css" %}'>
+    <!-- Chart JS -->
     <title>Developers</title>
 {% endblock head %}
 
@@ -13,62 +16,149 @@
 {% block content %}
 
 <div class="container">
+    
     <div class='row'>
-        <h3 class='col-md text-center my-2'>About Developers</h3>
-    </div>
-    <hr class="bg-light" style="height: 1px;"/>
+        <div class="col-md-6">
 
-    <div class='row '>
-        
-        <div class="col-md-3">
-            <h5 class="card-title text-center">Taksh Patel</h5>
-            <img id='image' src="{% static 'images/developers/taksh.jpg' %}" class=" card-img-top"alt="...">
-            <div class="card-body">
-            <p class="card-text text-center">Senior Developer</p>
-            <hr class="bg-light" />
+            <h3 class='text-center my-2'>About Project</h3>
+            <hr class="bg-light w-50" style="height: 1px;"/>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad suscipit rerum dolor officia odio illo quibusdam itaque sit blanditiis libero.
+                We presents a platform to Customers to connect with their Local Shop Owners
             </p>
-            <a href="https://www.linkedin.com/in/taksh-patel-1a7a511b9/" class="btn btn-primary">More Info.</a>
+            <p> 
+                This website is provides a platform to local vendors/shops , People who does small level business / 
+                Planetary industry, People who wants to grow in business.
+            </p>
+            <p>
+                We Provides a Simple UI to intract with App. Any Person can use this App.
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa consectetur velit, doloremque ab dolore nulla hic numquam eos, modi excepturi in? Iusto atque nostrum culpa voluptatem deleniti pariatur explicabo dolorum!
+            </p>
         </div>
+
+
+        <div class="col-md-6">
+
+            <h3 class='text-center my-2'>About Tech</h3>
+            <hr class="bg-light w-50" style="height: 1px;"/>
+            <canvas id="Web-Tech">
+
+            </canvas>
+        </div>
+        
     </div>
     
-        <div class="col-md-3">
+    <div class='row m-4 justify-content-center '>
+        <h3 class='col-md-12 text-center my-2'>About Developers</h3>
+        <hr class="bg-light col-md-12" style="height: 1px;"/>
+        
+        <div class="col-md-3 my-card pt-4">
+            <h5 class="card-title text-center">Taksh Patel</h5>
+            <img id='image' src="{% static 'images/developers/taksh1.jpg' %}" class=" card-img-top"alt="...">
+            <div class="card-body">
+                <p class="card-text text-center">Senior Developer</p>
+                <hr class="bg-light" />
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad suscipit rerum dolor officia odio illo quibusdam itaque sit blanditiis libero.
+                </p>
+                <div class="row py-2">
+                    <a href="#" class="fab fa-youtube mx-auto"></a>
+                    <a href="#" class="fab fa-linkedin mx-auto"></a>
+                    <a href="#" class="fab fa-facebook mx-auto"></a>
+                    <a href="#" class="fas fa-phone-alt mx-auto"></a>
+                </div>
+                <!-- <a href="https://www.linkedin.com/in/taksh-patel-1a7a511b9/" class="btn btn-primary">More Info.</a> -->
+            </div>
+        </div>
+    
+        <div class="col-md-3 my-card pt-4">
             <h5 class="card-title text-center">Shivam Prajapati</h5>
-            <img src="{% static 'images/developers/img2.jpg' %}" class="card-img-top" alt="Shivam">
+            <img src="{% static 'images/developers/shivam.jpg' %}" class="card-img-top" alt="Shivam">
             
             <div class="card-body">
                 <p class="card-text text-center">Senior Developer</p>
                 <hr class="bg-light" />
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, dolor ullam quibusdam neque placeat sequi sunt blanditiis inventore aliquid dolorum?</p>
-                <a href="" class="btn btn-primary">More Info.</a>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, dolor ullam quibusdam neque placeat sequi sunt blanditiis inventore aliquid dolorum?
+                </p>
+                <div class="row py-2">
+                    <a href="#" class="fab fa-youtube mx-auto"></a>
+                    <a href="#" class="fab fa-linkedin mx-auto"></a>
+                    <a href="#" class="fab fa-facebook mx-auto"></a>
+                    <a href="#" class="fas fa-phone-alt mx-auto"></a>
+                </div>
             </div>
         </div>
         
-        <div class="col-md-3">
+        <div class="col-md-3 my-card pt-4">
             <h5 class="card-title text-center">Prince Tirhtankar</h5>
-            <img src="{% static 'images/developers/img2.jpg' %}" class="card-img-top" alt="Prince">
+            <img src="{% static 'images/developers/prince.jpg' %}" class="card-img-top" alt="Prince">
             
             <div class="card-body">
                 <p class="card-text text-center">Senior Developer</p>
                 <hr class="bg-light" />
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga quas praesentium minima dignissimos dolore debitis odit quod cupiditate a earum.</p>
-                <a href="" class="btn btn-primary">More Info.</a>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, dolor ullam quibusdam neque placeat sequi sunt blanditiis inventore aliquid dolorum?
+                </p>
+                <div class="row py-2">
+                    <a href="#" class="fab fa-youtube mx-auto"></a>
+                    <a href="#" class="fab fa-linkedin mx-auto"></a>
+                    <a href="#" class="fab fa-facebook mx-auto"></a>
+                    <a href="#" class="fas fa-phone-alt mx-auto"></a>
+                </div>
             </div>
-    </div>
+        </div>
     
-    <div class="col-md-3">
-        <h5 class="card-title text-center">Deep Vaghela</h5>
-        <img src="{% static 'images/developers/img2.jpg' %}" class="card-img-top" alt="Deep">
-        
-        <div class="card-body">
-            <p class="card-text text-center">Senior Developer</p>
-            <hr class="bg-light" />
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga quas praesentium minima dignissimos dolore debitis odit quod cupiditate a earum.</p>
-            <a href="" class="btn btn-primary">More Info.</a>
-        </div>
+        <div class="col-md-3 my-card pt-4">
+            <h5 class="card-title text-center">Deep Vaghela</h5>
+            <img src="{% static 'images/developers/deep.jpg' %}" class="card-img-top" alt="Deep">
+            
+            <div class="card-body">
+                <p class="card-text text-center">Senior Developer</p>
+                <hr class="bg-light" />
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, dolor ullam quibusdam neque placeat sequi sunt blanditiis inventore aliquid dolorum?
+                </p>
+                <div class="row py-2">
+                    <a href="#" class="fab fa-youtube mx-auto"></a>
+                    <a href="#" class="fab fa-linkedin mx-auto"></a>
+                    <a href="#" class="fab fa-facebook mx-auto"></a>
+                    <a href="#" class="fas fa-phone-alt mx-auto"></a>
+                </div>
+            </div>
         </div>
         
     </div>
+
 </div>
+<script>
+    var ctx = document.getElementById('Web-Tech').getContext('2d');
+    var myLineChart = new Chart(ctx, {
+        //type: 'pie',
+        type: 'doughnut',
+        data: { 
+            datasets: [
+                {
+                    data : [ 25,50,10,10,5],
+                    backgroundColor : [ "green" ,"blue" , "yellow", "lightblue","pink"],
+                    label: "Tech"
+                }
+            ],
+            labels: [
+                    'HTML',
+                    'Djnago',
+                    'CSS',
+                    'Bootstrap',
+                    'JS'
+                ],
+            
+        },
+        options: {
+            animation :{
+                duration : 5000,
+                easing: "easeOutElastic"
+            }
+        }
+    });
+</script>
+
 {% endblock content %}

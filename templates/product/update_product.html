@@ -1,18 +1,42 @@
 {% extends "../base.html" %}
 
 {% load static %}
+{% load widget_tweaks %}
 
 {% block head %} 
-    <!-- <link rel="stylesheet" href='{% static "css\product\myshop.css" %}'> -->
+    <link rel="stylesheet" href='{% static "css\product\createproduct.css" %}'>
     <title>Update Product</title>
 {% endblock head %}
 
 {% block content %}
 
-    <form action="" method="post">
+<div class="text-center text-light ">
+    <h3 class="font-weight-bold">Update Product</h3>
+    <hr class="bg-light w-50" />
+</div>
+<div class="row justify-content-center">
+    <form action="" method="post"  enctype="multipart/form-data">
         {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Save">
+        <!-- {{ form.as_p }} -->
+        {% for field in form %}
+            {{ field.label_tag }}
+            {{ field | add_class:"form-control mb-2" }}
+            {% for error in field.errors %}
+                <p class="text-center mb-5">
+                    {{ error }}
+                </p>
+            {% endfor %}
+
+        {% endfor %}
+        <input type="submit" class="form-button btn my-2"  />
     </form>
+    <!-- Add errors  -->
+    
+    {% if messages %}
+        {% for message in messages %} 
+        {{ message }}
+        {% endfor %}
+    {% endif %}
+</div>
 
 {% endblock content %}

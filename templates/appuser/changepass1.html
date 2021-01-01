@@ -1,25 +1,49 @@
 
 {% extends "../base.html" %}
 
+{% load widget_tweaks %}
 {% block head %}
-    <title>Change</title>
+    <title>Change Pass</title>
+    <style>
+    .form-button {
+        width: 20%;
+        background: none;
+        color : white;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .form-button:hover {
+        background-color: rgb(148, 91, 16);
+    }
+  </style>
 {% endblock head %}
 
 {% block content %}
+  
+    <h1 class="text-center font-weight-bold">Change Password</h1>
 
-    <form method="POST">
-        {% csrf_token %}
-        {% if form.non_field_errors %} 
-        {% for error in form.non_field_errors %} 
-        <h1> {{ error }} </h1> <br> 
-        {% endfor %} 
-        {% endif %}
-        {% for field in form %} 
-                {{ field.label_tag }} 
-                {{ field}} 
-                {{ field.errors|striptags }}<br> 
+    <!-- <div class="row border justify-content-center "> -->
+        <form method="POST" enctype="multipart/form-data" class="row">
+            {% csrf_token %}
+            {% if form.non_field_errors %} 
+            {% for error in form.non_field_errors %} 
+                <h1> {{ error }} </h1> <br> 
+                {% endfor %} 
+                {% endif %}
+            {% for field in form %}
+                <div class="col-md-3 my-3 "></div>
+                <div class="col-md-2">
+                    {{ field.label_tag}}
+                </div>
+                <div class="col-md-4 my-2">
+                    {{field | add_class:"form-control bg-transparent"}}
+                    {{ field.errors|striptags }}<br>
+                </div>
+                <div class="col-md-3"></div>
+            
             {% endfor %}
-            <input type="submit" value="Save">
-    </form>
-    
+            <hr class="bg-light" />
+            <input type="submit" value="Save" class="my-2 mx-auto form-button btn btn-primary">
+        </form>
+
 {% endblock content %}

@@ -9,27 +9,32 @@
 
 {% block content %}
 
-<div class="row ">
+<div class="row">
 
     {% for product in product_data %}
-        <div class="col-md-4 text-light">     
-            <div class="card mx-auto " style="width: 18rem;background-color:rgba(0, 0, 0,0);">
+        <div class="col-md-3 my-2">     
+            <div class="card mx-auto border-0" style="width: 18rem;background-color:rgba(0, 0, 0,0);">
                 <img class="card-img-top" src='{{ product.pro_image.url }}'
-                height=300px width=100px alt="Card image cap">
+                height=200px width=80px alt="Card image cap">
                 <div class="card-body">
-                    <a href="{% url 'Productinfo' product.id %}">
-                        <h3 class="card-title">{{product.pro_name}}</h3>
+                    <a href="{% url 'Productinfo' product.id %}" style="color: black;">
+                        <u class="h4">
+                            {{product.pro_name}}
+                        </u>
                     </a>
-                    <p>Owner : {{product.pro_shop.shop_owner}}</p>
-                    <p>Shop: {{ product.pro_shop}}</p>
+                    <!-- <p>Shop: {{ product.pro_shop}}</p> -->
                     <p> Price : {{product.pro_price}} ₹</p>
-                    <p class="">{{ product.pro_des}}</p>
-                    <p class="">Remaining : {{ product.pro_quantity}}</p>
-                    <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary my-btn">
-                        <i class="fal fa-cart-arrow-down"></i>
-                    </a>
+                    {% if product.pro_quantity != 0 %}
+                        <p>Remaining : {{ product.pro_quantity}}</p>
+                        <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary my-btn">
+                            <i class="fal fa-cart-arrow-down"></i>
+                        </a>
+                    {% else %}
+                        <p>Out Of Stock</p>
+                    {% endif %}
                 </div>
             </div>
+            <hr class="bg-light" />
         </div>
     {% endfor %}
 </div>

@@ -1,0 +1,3 @@
+All Scripting is done using Python and it is implemented by Django.
+HTML is used to render dynamic templates.
+CSS and Bootstrap classes are used for Styling.
